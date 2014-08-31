@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>ReelMC{?title} - {title}{/title}</title>
+	<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<div id="wrapper">
+    {+body /}
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

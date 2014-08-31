@@ -1,0 +1,17 @@
+{>"layouts/master" /}
+
+{<body}
+	<div class="hero">
+		<h1 class="title"><a href="#">ReelMC</a></h1>
+	</div>
+	<div class="panel">
+		<h1 class="centered">Welcome!</h1>
+		<p>
+			ReelMC aims to be the companion to minecraft you've always wished you had.
+		</p>
+
+		<form style="display: inline" action="/worlds" method="get">
+			<button class="btn btn-primary centered" id="enter">Enter</button>
+		</form>
+	</div>
+{/body}
