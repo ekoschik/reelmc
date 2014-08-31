@@ -15,9 +15,9 @@ module.exports = function (router) {
         res.render('index', model);
     });
 
-    router.get('/worlds', function(req, res)) {
+    router.get('/worlds', function(req, res) {
         res.render('world');
-    }
+    });
 
     router.post('/worlds/create', function(req, res) {
         mcworld.create(function(world) {
