@@ -4,7 +4,7 @@
   "description": "A Service for Starting Other Processes",
   "main": "streamlined.js",
   "scripts": {
-	"start": "node ./server.js",
+    "start": "node ./server.js",
     "test": "node tests/streamlined_test.js"
   },
   "repository": {
@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.6.5",
+    "daemonize2": "^0.4.2",
     "express": "^4.8.5",
     "minimist": "^1.1.0"
   }
