@@ -1,10 +1,9 @@
 'use strict';
 
-var http = require('http');
-var mcworld = require('lib/mcworld');
+var http = require('http')
+  , mcworld = require('../lib/mcworld')
+  ;
 
-
-//var IndexModel = require('../models/index');
 
 module.exports = function (router) {
  //   var model = new IndexModel();

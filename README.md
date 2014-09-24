@@ -1,4 +1,4 @@
 reelmc
 ======
 
-A Minecraft Service
+The de facto Minecraft console.

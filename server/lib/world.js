@@ -6,7 +6,7 @@
 // @@  Imports  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-var streamlined = require('streamlined')
+var streamlined = require('streamlined.js')
   , events      = require('events')
   , uuid        = require('node-uuid')
   , path        = require('path')
@@ -97,12 +97,13 @@ World.prototype._connect = (function() {
             that._connection.on('data', function(data) { 
                 /* do stuff with the data */ 
                 console.log(data.toString().trim());
+                that.emit('data', data.toString());
             });
             that.emit('connect');
             callback && callback();
         });
 
-        this.connection.on('error', function(err) {
+        this._connection.on('error', function(err) {
             that._connection = null;
             console.log(err);
             if (failures > 10) {
@@ -132,7 +133,7 @@ World.prototype.command = function(command) {
 var main = function() {
     console.log('running main method');
 
-    var files = fs.readdirSync(WORLD_ROOT);
+    var files = fs.readdirSync(defaults.WORLD_DIR);
     var id;
     if (files.length != 0) {
         id = files[0];

@@ -6,8 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "start": "NODE_PATH=. node index.js",
-    "start-dev": "node-dev index.js"
+    "start": "node index.js",
+    "start-dev": "node-dev index.js",
+    "preinstall": "npm link ../lib/streamlined",
+    "preupdate": "npm link ../lib/streamlined"
   },
   "dependencies": {
     "adaro": "^0.1.5",
@@ -20,9 +22,13 @@
     "kraken-devtools-browserify": "0.0.1",
     "kraken-js": "^1.0.1",
     "localizr": "^0.1.0",
+    "moment": "^2.8.3",
     "node-sass": "^0.8.6",
+    "node-uuid": "^1.4.1",
+    "request": "^2.42.0",
     "request-json": "^0.4.11",
-    "socket.io": "^1.0.6"
+    "socket.io": "^1.0.6",
+    "streamlined.js": "0.0.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

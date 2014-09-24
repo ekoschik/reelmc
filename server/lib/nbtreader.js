@@ -13,7 +13,7 @@ var EXTENSIONS = ['dat', 'mca']
  * @param {string} fname the name of the file
  * @param {function(exception, object)} callback
  */
-function parseNbt(fname, callback) {
+function parseNBT(fname, callback) {
     fs.readFile(fname, function(err, data) {
         if (err) throw err;
         nbt.parse(data, function(err, result) {
@@ -40,7 +40,7 @@ function NBTFile(fname) {
 
     console.log('new nbtfile ' + fname);
 
-    parseNbt(scope.fname, function(err, data) {
+    parseNBT(scope.fname, function(err, data) {
         if (err) throw err;
         scope.data = data;
         // TODO: send an event to connected sockets
@@ -58,7 +58,7 @@ NBTFile.prototype.update = function() {
     console.log(scope.fname, "updated after", now - scope.lastUpdated, "milliseconds");
     scope.lastUpdated = now;
 
-    parseNbt(scope.fname, function(err, data) {
+    parseNBT(scope.fname, function(err, data) {
         var delta = jdp.diff(scope.data, data);
         console.log(delta);
         // TODO: send an update event out to connected sockets
@@ -109,7 +109,9 @@ function NBTMonitor(dir) {
  */
 NBTMonitor.prototype.newFile = function(fname) {
     var scope = this;
-    scope.files[fname] = new NBTFile(fname);
+    if (!(fname in scope.files)) {
+        scope.files[fname] = new NBTFile(fname);
+    }
 };
 
 /**
@@ -128,7 +130,7 @@ NBTMonitor.prototype.updateFile = function(fname) {
 }
 
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// @@  NBTMonitor  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@  Utilities  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 /**
@@ -144,11 +146,26 @@ function validFormat(fname) {
     });
 }
 
-var dir = process.argv[2];
-if (!dir) {
-    console.log("usage:", process.argv[0], path.basename(process.argv[1]), "<directory>");
-    process.exit();
+/**
+ * Starts an NBTMonitor watching the given directory.
+ * @param {Array.<string>} argv The args passed into the program.
+ */
+function main(argv) {
+    var dir = argv[2];
+    if (!dir) {
+        console.log("usage:", process.argv[0], path.basename(process.argv[1]), "<directory>");
+        process.exit();
+    }
+    var monitor = new NBTMonitor(dir);
+    console.log("monitoring", dir);
 }
 
-var monitor = new NBTMonitor(dir);
-console.log("monitoring", dir);
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@  Include Guard  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//
+if (require.main === module) {
+    main(process.argv);
+}
+
+

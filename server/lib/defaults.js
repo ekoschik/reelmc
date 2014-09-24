@@ -69,3 +69,10 @@ module.exports.JARFILE_DIR = ensureExists(path.join(module.exports.ROOT_DIR, 'ja
  */
 module.exports.TEMP_DIR = ensureExists(isWin ? path.join(process.env.TEMP, module.exports.APPNAME) : path.join('/tmp', module.exports.APPNAME));
 
+/**
+ * The directory that runtime files such as pidfiles will be written to.
+ * @const
+ * @type {string}
+ */
+module.exports.RUNTIME_DIR = ensureExists(path.join(module.exports.ROOT_DIR, 'run'));
+

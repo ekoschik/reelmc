@@ -52,12 +52,6 @@ module.exports = {
 
 function World(context) {
     events.EventEmitter.call(this);
-
-    var uuid = 
-
-    var defaults = {
-        name: 
-    }
     this.id = id;
 }
 
