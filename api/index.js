@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 var restify = require('restify');
+var path = require('path');
+var fs = require('fs');
 
 var server = restify.createServer();
 server.pre(restify.pre.userAgentConnection());
@@ -14,17 +16,12 @@ server.use(function(req, res, next) {
 })
 
 
-function worlds(req, res, next) {
-    res.send('world' + req.params);
-    return next();
-}
-
-server.get('/worlds', worlds);
-server.head('/worlds', worlds);
-
-server.get('/worlds/:id', worlds);
-server.head('/worlds/:id', worlds);
-
+routes = fs.readdirSync('routes')
+routes.forEach(function(route) {
+    if (route[0] !== '.') {
+        require(path.resolve('routes', route))(server);
+    }
+});
 
 server.listen(8080, function() {
     console.log('%s listening at %s', server.name, server.url);
