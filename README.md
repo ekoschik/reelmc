@@ -1,4 +1,4 @@
 reelmc
 ======
 
-The de facto Minecraft console.
+Api wrapper around a vanilla minecraft server.
