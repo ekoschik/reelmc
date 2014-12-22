@@ -1,0 +1,16 @@
+{>"layouts/master" /}
+
+{<body}
+	<p>Running Worlds:</p>
+	{?worlds}
+	<ul>
+		{#worlds}
+		<li><a href="/world/{.}">{.}</a></li>
+		{/worlds}
+	</ul>
+	{/worlds}
+	{^worlds}
+	<p>There are no running worlds!</p>
+	{/worlds}
+	<p><a href="/world/create">Create New World</a></p>
+{/body}

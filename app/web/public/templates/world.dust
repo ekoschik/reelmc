@@ -1,0 +1,17 @@
+{>"layouts/master" /}
+
+{<body}
+	<h1 class="banner">{world}</h1>
+
+	<p class="subtitle">logged in players:</p>
+	{?players}
+	<ul>
+		{#players}
+		<li><a href="/player/{.}">{.}</a></li>
+		{/players}
+	</ul>
+	{/players}
+	{^players}
+	<p>No logged in players!</p>
+	{/players}
+{/body}

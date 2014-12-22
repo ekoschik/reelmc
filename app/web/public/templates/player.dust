@@ -1,0 +1,20 @@
+{>"layouts/master" /}
+
+{<body}
+	<h1>{player}</h1>
+	<p>
+		location:
+		<span>
+			x:
+			<span>{location.x}</span>
+		</span>
+		<span>
+			y:
+			<span>{location.y}</span>
+		</span>
+		<span>
+			z:
+			<span>{location.z}</span>
+		</span>
+	</p>
+{/body}

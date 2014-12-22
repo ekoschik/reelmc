@@ -1,0 +1,24 @@
+{
+  "name": "streamlined",
+  "version": "0.0.1",
+  "description": "A Service for Starting Other Processes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server.js",
+    "test": "node tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "bitbucket.org/reelmc/streamlined.js.git"
+  },
+  "keywords": [
+    "process",
+    "service"
+  ],
+  "author": "bschlenk@umich.edu",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.2.3",
+    "restify": "^2.8.3"
+  }
+}
