@@ -15,8 +15,8 @@ var restify = require('restify') // rest api framework
 // @@  Local Includes  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-var defaults = require('./lib/defaults') // default path names
-  , logger   = require('./lib/logger')
+var defaults = require('./defaults') // default path names
+  , logger   = require('./logger')
   ;
 
 

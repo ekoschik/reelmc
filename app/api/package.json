@@ -2,7 +2,7 @@
   "name": "reelmc-api",
   "version": "1.0.0",
   "description": "The public api for reelmc",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,11 +14,12 @@
   "author": "Brian Schlenker <bschlenk@umich.edu>",
   "license": "ISC",
   "dependencies": {
-    "bunyan": "^1.2.2",
-    "moment": "^2.8.3",
-    "request": "^2.47.0",
-    "restify": "^2.8.3",
-    "touch": "0.0.3"
+    "bunyan": "^1.2.3",
+    "moment": "^2.8.4",
+    "request": "^2.51.0",
+    "restify": "^2.8.4",
+    "touch": "0.0.3",
+    "underscore": "^1.7.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
