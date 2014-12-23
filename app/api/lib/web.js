@@ -104,7 +104,8 @@ module.exports.download = function(options, callback) {
     // TOOD: handle the error case here
     var r = request({
         url: url,
-        headers: headers
+        headers: headers,
+        strictSSL: false
     }).pipe(file).on('finish', function() {
         logger.debug('done downloading file');
         file.close(function() {
