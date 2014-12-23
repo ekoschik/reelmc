@@ -139,8 +139,11 @@ function downloadHelper(url, callback) {
  *      updated or not.
  */
 var downloadServer = module.exports.downloadServer = function(version, callback) {
-    resolveVersion(version, function(version) {
-        downloadHelper(getServerUrl(version), callback);
+    resolveVersion(version, function(err, version) {
+        if (err) 
+            callback && callback(err);
+        else 
+            downloadHelper(getServerUrl(version), callback);
     });
 }
 
@@ -154,8 +157,11 @@ var downloadServer = module.exports.downloadServer = function(version, callback)
  *      updated or not.
  */
 var downloadClient = module.exports.downloadClient = function(version, callback) {
-    resolveVersion(version, function(version) {
-        downloadHelper(getClientUrl(version), callback);
+    resolveVersion(version, function(err, version) {
+        if (err)
+            callback && callback(err);
+        else
+            downloadHelper(getClientUrl(version), callback);
     });
 }
 
@@ -167,5 +173,11 @@ if (require.main === module) {
     getVersions(function(err, versions) {
         if (err) throw err;
         console.log(versions);
+
+        if (process.argv[2] === '-d') {
+            downloadServer('latest', function(err, file, updated) {
+                console.log('downloaded the latest server to', file);
+            });
+        }
     });
 }
